@@ -19,6 +19,11 @@ welche den grössten der Logik abwickelt und statisch ist.
 Dann kommt die Abstrakte Field Klasse, welche jeweils eine Koordinate hat, damit die Position jedes Feldes angegeben werden kann.
 Dazu kommen dann die zwei unter Klassen das EmtpyField und das BombField.
 
+![Neues Klassen Diagramm](new_class_diagram.png "Neues Klassen Diagramm")
+
+Es blieb grössten Teils wie geplant aber die meiste Logik wurde in die einzelnen Klassen verschoben
+und eine weiter klasse kam dazu wegen den Buttons/Feldern von Java Swing.
+
 
 ## Activity Diagramme:
 
