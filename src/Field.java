@@ -1,5 +1,4 @@
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +10,30 @@ public abstract class Field {
     private boolean markedAsBomb = false;
     private Coordinate position;
 
-    public List<Field> getNeighbours() {
-        Coordinate compareCoordinate = new Coordinate(position.getX(), position.getY()); //compare coordinate is position of this instance
-        List<Field> result = new ArrayList<>();
+    public Field(Coordinate position) {
+        this.position = position;
+    }
 
-        for (int i = 0; i < 3; i++) { //loop trough left, right and same
-            compareCoordinate.setX(compareCoordinate.getX()-1+i);
-            for (int j = 0; j < 3; j++) { //loop trough up, down and same
-                compareCoordinate.setY(compareCoordinate.getY()-1+j);
-                for (Field field: MinesweeperApplication.game.getFields()) { //loop trough fields if matches
-                    if (field.position.equals(compareCoordinate) && field != this) { //if match and not this instance
-                        result.add(field);
-                    }
+    public List<Field> getNeighbours() {
+        List<Field> result = new ArrayList<>();
+        List<Field> allFields = MinesweeperApplication.game.getFields();
+        for (Field field : allFields) {
+            int xDistance = field.position.getX() - this.position.getX();
+            int yDistance = field.position.getY() - this.position.getY();
+            if(xDistance < 2 && xDistance > -2 && yDistance < 2 && yDistance > -2) {
+                if (!field.position.equals(this.position)) {
+                    result.add(field);
                 }
             }
         }
-
+        if (result.size() != 8 && result.size() !=5 && result.size() != 3) {
+            System.out.println("Something went wrong: Number of neighbours is " + result.size());
+            System.out.println(result);
+        }
         return result;
     }
+
+
 
     public abstract void check();
 

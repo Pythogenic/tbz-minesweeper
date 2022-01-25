@@ -8,6 +8,10 @@ public class EmptyField extends Field{
 
     private int displayNumber = 0;
 
+    public EmptyField(Coordinate position) {
+        super(position);
+    }
+
     public void check() {
         setDisplayedNumber();
         setVisible(true);
@@ -19,14 +23,16 @@ public class EmptyField extends Field{
     }
 
     public void setDisplayedNumber() {
+        int newNumber = 0;
         for (Field field : getNeighbours()) {
             if (field.getClass() == BombField.class) {
-                displayNumber++;
+                newNumber++;
             }
         }
+        displayNumber = newNumber;
     }
 
-    private void showEmptyNeighboursWithDisplayNumber0(List<Field> alreadyFields) { //todo could have a lot of bugs
+    private void showEmptyNeighboursWithDisplayNumber0(List<Field> alreadyFields) {
         for (Field field : getNeighbours()) {
             if (field.getClass() == EmptyField.class && !alreadyFields.contains(field)) {
                 EmptyField emptyField = (EmptyField) field;
