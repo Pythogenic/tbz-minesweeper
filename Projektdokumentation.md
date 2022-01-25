@@ -19,6 +19,17 @@ welche den grössten der Logik abwickelt und statisch ist.
 Dann kommt die Abstrakte Field Klasse, welche jeweils eine Koordinate hat, damit die Position jedes Feldes angegeben werden kann.
 Dazu kommen dann die zwei unter Klassen das EmtpyField und das BombField.
 
+
+## Activity Diagramme:
+
+![Spiel Activity Diagram](normal_game_sequence.png "Spiel Activity Diagram")
+
+Dieses Diagram zeigt einen normalen Spiel verlauf, mit den üblichen entscheidungen die man Treffen kann.
+
+![Spiel Activity Diagram](empty_field_click.png "Left Click Empty Field Activity Diagram")
+
+Dieses Diagram zeigt den Ablauf im Code wenn man ein leeres Feld anklickt.
+
 ## Selbstreflexion:
 Es gibt eigentlich nicht viel zu Sagen das Projekt lief einwandfrei ab, die Arbeitsteilung war von anfang an klar
 und wir konnten loslegen, sobald uns eine gute Idee einfiel.
