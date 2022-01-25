@@ -9,8 +9,6 @@ Wir verzichten auf eine score tabelle und user Registrierung.
 
 #### Features
 
-- Zeit angabe
-- Berechnung der Punkte
 - Images für die verschiedenen Zustände der Felder
 - Bomben markieren ist möglich
 - Fun Guarantee
