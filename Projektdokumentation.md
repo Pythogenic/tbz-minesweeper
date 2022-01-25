@@ -6,7 +6,7 @@ Wir haben und dieses Mal wieder dazu entschieden ein kleines Spiel zu programmie
 um das alt bekannte Minesweeper. Die Regeln sind genau gleich wie beim Normalen spiel, mann kann sogar Felder flaggen.
 
 Natürlich brauchen wir auch dafür wieder ein GUI das wir mit Java Swing umgesetzt haben.
-Der ganze code ist wie auch schon zuvor in Java ohne zusätzliche Frameworks.
+Der ganze code ist wie auch schon zuvor in Java ohne zusätzliche Frameworks (ausser Swing).
 
 ## Klassen Diagramm:
 

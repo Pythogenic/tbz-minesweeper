@@ -64,8 +64,14 @@ public class Game {
         for (int i = 0; i < amountOfBombs; i++) {
             Coordinate coordinate;
             do {
-                int x = randomInt(1, width);
-                int y = randomInt(1, width);
+                int x = 0;
+                int y = 0;
+                try {
+                    x = randomInt(1, width);
+                    y = randomInt(1, width);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Internal error");
+                }
                 coordinate = new Coordinate(x, y);
             } while (coordinateInList(coordinate, result));
             result.add(coordinate);
