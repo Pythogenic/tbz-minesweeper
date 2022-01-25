@@ -9,6 +9,6 @@ Wir verzichten auf eine score tabelle und user Registrierung.
 
 #### Features
 
-- Images für die verschiedenen Zustände der Felder
+- Visualisierung für die verschiedenen Zustände der Felder
 - Bomben markieren ist möglich
 - Fun Guarantee

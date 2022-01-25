@@ -6,27 +6,34 @@ import java.util.Random;
 
 public class Game {
 
-    private final int amountOfX = 10;
-    private final int amountOfY = 10;
-    private final int amountOfBombs = 6;
+    @Getter
+    private final int width = 20;
+    private final int amountOfBombs = 30;
     @Getter
     private final List<Field> fields = new ArrayList<>();
-    private final UserInterface ui = new UserInterface();
+    private UserInterface ui = new UserInterface();
+
 
     public void start() {
         generate();
-        ui.generate(amountOfX, amountOfY);
+        ui.generate();
     }
 
     public void lose() {
-        //todo ui message
-        reset();
+        for (Field field :fields) {
+            if (field.getClass() == EmptyField.class) {
+                ((EmptyField) field).setDisplayedNumber();
+            }
+            field.setVisible(true);
+        }
+        ui.showLostDialog();
     }
 
     public void reset() {
         fields.removeAll(fields);
-        generate();
-        //todo ui reset
+        ui.exit();
+        ui = new UserInterface();
+        start();
     }
 
     public Field getFieldByCoordinate(Coordinate coordinate) {
@@ -40,13 +47,13 @@ public class Game {
 
     private void generate() {
         List<Coordinate> bombCoordinates = getBombCoordinates();
-        for (int x = 1; x <= amountOfX; x++) {
-            for (int y = 1; y <= amountOfY; y++) {
+        for (int x = 1; x <= width; x++) {
+            for (int y = 1; y <= width; y++) {
                 Coordinate coordinate = new Coordinate(x,y);
                 if (coordinateInList(coordinate, bombCoordinates)) {
-                    fields.add(new BombField());
+                    fields.add(new BombField(coordinate));
                 } else {
-                    fields.add(new EmptyField());
+                    fields.add(new EmptyField(coordinate));
                 }
             }
         }
@@ -57,8 +64,14 @@ public class Game {
         for (int i = 0; i < amountOfBombs; i++) {
             Coordinate coordinate;
             do {
-                int x = randomInt(1, amountOfX);
-                int y = randomInt(1, amountOfY);
+                int x = 0;
+                int y = 0;
+                try {
+                    x = randomInt(1, width);
+                    y = randomInt(1, width);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Internal error");
+                }
                 coordinate = new Coordinate(x, y);
             } while (coordinateInList(coordinate, result));
             result.add(coordinate);
